@@ -22,10 +22,10 @@ pipeline {
 
         stage('Docker Run') {
             steps {
+                // If container already exists, remove it first
                 sh 'docker rm -f my-node-app || true'
                 sh 'docker run -d -p 3000:3000 --name my-node-app node-app'
             }
         }
     }
 }
-
