@@ -1,12 +1,12 @@
 pipeline {
     agent any
 
-    stage('Clone') {
-    steps {
-        git credentialsId: 'github-token', url: 'https:/github.com/Maral604/node-app.git'
-    }
-}
-
+    stages {
+        stage('Clone') {
+            steps {
+                git credentialsId: 'github-token', url: 'https://github.com/Maral604/node-app.git'
+            }
+        }
 
         stage('Install Dependencies') {
             steps {
@@ -22,8 +22,10 @@ pipeline {
 
         stage('Docker Run') {
             steps {
+                sh 'docker rm -f my-node-app || true'
                 sh 'docker run -d -p 3000:3000 --name my-node-app node-app'
             }
         }
     }
 }
+
