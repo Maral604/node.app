@@ -3,7 +3,7 @@ pipeline {
 	stages {
     stage('Clone') {
     steps {
-        git credentialsId: 'github-token', url: 'https://github.com/Maral604/node-app.git'
+        git credentialsId: 'github-token', url: 'https://github.com/Maral604/node.app.git'
     }
 }
 
